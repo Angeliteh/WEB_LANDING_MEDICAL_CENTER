@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- SEO OPTIMIZADO -->
+        <meta name="description" content="Centro Médico San Rafael en CDMX. Especialidades médicas, consultas, emergencias. Equipo médico certificado, instalaciones modernas en Insurgentes Sur. ☎️ 55 5661-8420">
+        <meta name="keywords" content="centro médico, consultas médicas, doctor, especialidades médicas, emergencias, salud, medicina, clínica, Ciudad">
+        <meta name="author" content="Centro Médico">
+        <meta name="robots" content="index, follow">
+        <meta name="language" content="Spanish">
+
+        <!-- OPEN GRAPH (Redes Sociales) -->
+        <meta property="og:title" content="Centro Médico - Atención Médica Profesional en Ciudad">
+        <meta property="og:description" content="Centro médico con más de 12 años de experiencia. Consultas, especialidades y emergencias. Equipo certificado y tecnología moderna.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.centromedico.com">
+        <meta property="og:image" content="https://www.centromedico.com/images/centro-medico-og.jpg">
+        <meta property="og:locale" content="es_ES">
+
+        <!-- TWITTER CARDS -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Centro Médico - Atención Médica Profesional">
+        <meta name="twitter:description" content="Centro médico profesional con más de 12 años de experiencia en Ciudad.">
+        <meta name="twitter:image" content="https://www.centromedico.com/images/centro-medico-twitter.jpg">
+
+        <!-- LOCAL BUSINESS SCHEMA -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "MedicalOrganization",
+          "name": "Centro Médico",
+          "description": "Centro médico profesional con servicios de salud integral",
+          "url": "https://www.centromedico.com",
+          "telephone": "+52-55-5661-8420",
+          "email": "contacto@centromedicosanrafael.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Av. Principal 123",
+            "addressLocality": "Ciudad",
+            "addressCountry": "País"
+          },
+          "openingHours": [
+            "Mo-Fr 08:00-18:00",
+            "Sa 09:00-14:00"
+          ],
+          "priceRange": "$$",
+          "image": "https://www.centromedico.com/images/centro-medico-logo.jpg",
+          "sameAs": [
+            "https://www.facebook.com/centromedico",
+            "https://www.instagram.com/centromedico"
+          ]
+        }
+        </script>
+
+        <title>Centro Médico - Atención Médica Profesional en Ciudad | Consultas y Especialidades</title>
+
+        <!-- GOOGLE ANALYTICS 4 -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            // Configuración de consentimiento por defecto (GDPR compliant)
+            gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'functionality_storage': 'granted',
+                'security_storage': 'granted'
+            });
+
+            // Configuración básica
+            gtag('config', 'G-XXXXXXXXXX', {
+                // Configuración para centro médico
+                page_title: 'Centro Médico',
+                custom_map: {
+                    'dimension1': 'user_type',
+                    'dimension2': 'service_interest'
+                },
+                // Configuración de privacidad (GDPR compliant)
+                anonymize_ip: true,
+                allow_google_signals: false,
+                allow_ad_personalization_signals: false
+            });
+
+            // Eventos personalizados para centro médico
+            function trackFormSubmission(formType) {
+                gtag('event', 'form_submission', {
+                    event_category: 'engagement',
+                    event_label: formType,
+                    value: 1
+                });
+            }
+
+            function trackPhoneClick() {
+                gtag('event', 'phone_click', {
+                    event_category: 'contact',
+                    event_label: 'header_phone',
+                    value: 1
+                });
+            }
+
+            function trackWhatsAppClick() {
+                gtag('event', 'whatsapp_click', {
+                    event_category: 'contact',
+                    event_label: 'floating_button',
+                    value: 1
+                });
+            }
+
+            function trackEmailClick() {
+                gtag('event', 'email_click', {
+                    event_category: 'contact',
+                    event_label: 'footer_email',
+                    value: 1
+                });
+            }
+
+            // Tracking de scroll depth (engagement)
+            let scrollTracked = false;
+            window.addEventListener('scroll', function() {
+                if (!scrollTracked && window.scrollY > document.body.scrollHeight * 0.75) {
+                    gtag('event', 'scroll_depth', {
+                        event_category: 'engagement',
+                        event_label: '75_percent',
+                        value: 75
+                    });
+                    scrollTracked = true;
+                }
+            });
+
+            console.log('📊 Google Analytics 4 initialized for Centro Médico');
+        </script>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/owl.carousel.min.css" rel="stylesheet">
+
+        <link href="css/owl.theme.default.min.css" rel="stylesheet">
+
+        <link href="css/templatemo-medic-care.css" rel="stylesheet">
+
+        <!-- COMPLETE DARK MODE & MODERN IMPROVEMENTS -->
+        <link href="css/dark-mode-complete.css" rel="stylesheet">
+
+        <!-- PWA MANIFEST -->
+        <link rel="manifest" href="manifest.json">
+
+        <!-- PWA META TAGS -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <meta name="apple-mobile-web-app-title" content="Centro Médico">
+        <meta name="msapplication-TileColor" content="#247cff">
+        <meta name="msapplication-tap-highlight" content="no">
+
+        <!-- PWA ICONS FOR APPLE -->
+        <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180x180.png">
+
+        <!-- PWA THEME COLOR -->
+        <meta name="theme-color" content="#247cff">
+<!--
+
+TemplateMo 566 Medic Care
+
+https://templatemo.com/tm-566-medic-care
+
+-->
+    </head>
+    
+    <body id="top">
+    
+        <main>
+
+            <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
+                <div class="container">
+                    <a class="navbar-brand mx-auto d-lg-none" href="index.html">
+                        Centro Médico San Rafael
+                        <strong class="d-block">Especialistas en Salud Integral</strong>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#hero">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#timeline">Timeline</a>
+                            </li>
+
+                            <a class="navbar-brand d-none d-lg-block" href="index.html">
+                                Centro Médico San Rafael
+                                <strong class="d-block">Especialistas en Salud Integral</strong>
+                            </a>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#reviews">Testimonials</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#booking">Booking</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+
+            <section class="hero" id="hero">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="images/slider/portrait-successful-mid-adult-doctor-with-crossed-arms.jpg" class="img-fluid" alt="Dr. García, médico especialista del centro médico">
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="images/slider/young-asian-female-dentist-white-coat-posing-clinic-equipment.jpg" class="img-fluid" alt="Doctora especialista en instalaciones modernas del centro médico">
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="images/slider/doctor-s-hand-holding-stethoscope-closeup.jpg" class="img-fluid" alt="Estetoscopio médico - atención profesional de salud">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="heroText d-flex flex-column justify-content-center">
+
+                                <h1 class="hero-title mt-auto mb-2">
+                                    <span class="hero-main-title" data-translate="hero.title">Mejor</span>
+                                    <div class="animated-info">
+                                        <span class="animated-item" data-translate="hero.animatedItems.0">salud</span>
+                                        <span class="animated-item" data-translate="hero.animatedItems.1">atención</span>
+                                        <span class="animated-item" data-translate="hero.animatedItems.2">cuidado</span>
+                                    </div>
+                                </h1>
+
+                                <p class="hero-description mb-3" data-translate="hero.description">Centro Médico es su clínica de confianza con más de 12 años de experiencia brindando atención médica integral y personalizada para toda la familia.</p>
+
+                                <div class="hero-actions">
+                                    <div class="hero-cta-minimal">
+                                        <a href="#booking" class="btn-hero-minimal">
+                                            <i class="bi-calendar-plus"></i>
+                                            <span data-translate="hero.bookAppointment">Agendar Cita</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding" id="about">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <h2 class="mb-lg-3 mb-3">Conozca al Dr. García</h2>
+
+                            <p>Con más de 12 años de experiencia en medicina general y familiar, el Dr. García se especializa en brindar atención médica integral y personalizada. Nuestro compromiso es ofrecer servicios de salud de la más alta calidad.</p>
+
+                            <p>Contamos con instalaciones modernas y equipos de última tecnología para garantizar diagnósticos precisos y tratamientos efectivos. La salud de nuestros pacientes es nuestra prioridad número uno.</p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-5 col-12 mx-auto">
+                            <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
+                                <p class="featured-text"><span class="featured-number">12</span> Años de Experiencia</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-6 ps-0">
+                            <img src="images/gallery/medium-shot-man-getting-vaccine.jpg" class="img-fluid galleryImage" alt="Paciente recibiendo vacuna en centro médico" title="Servicios de vacunación disponibles">
+                        </div>
+
+                        <div class="col-lg-6 col-6 pe-0">
+                            <img src="images/gallery/female-doctor-with-presenting-hand-gesture.jpg" class="img-fluid galleryImage" alt="Doctora presentando servicios médicos" title="Atención médica profesional y personalizada">
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding pb-0" id="timeline">
+                <div class="container">
+                    <div class="row">
+
+                        <h2 class="text-center mb-lg-5 mb-4">Nuestros Servicios</h2>
+                        
+                        <div class="timeline">
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Consulta General</h3>
+
+                                    <p>Atención médica integral para toda la familia. Diagnóstico, tratamiento y seguimiento de enfermedades comunes y crónicas.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-patch-check-fill timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>Lunes a Viernes</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                                <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Medicina Preventiva</h3>
+
+                                    <p>Programas de prevención y chequeos médicos regulares. Vacunación, exámenes de rutina y asesoramiento en salud.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-book timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>Citas Programadas</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Especialidades Médicas</h3>
+
+                                    <p>Contamos con especialistas en cardiología, dermatología, ginecología y medicina interna para una atención completa.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-file-medical timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>Previa Cita</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                                <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Atención de Emergencia</h3>
+
+                                    <p class="mb-0 pb-0">Servicio de urgencias médicas disponible las 24 horas. Atención inmediata para casos que requieren intervención rápida.</p>
+
+                                    <p>Contamos con personal médico especializado y equipos de emergencia para brindar atención oportuna y efectiva.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-globe timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>24/7 Disponible</time>
+                                </div>
+                            </div>
+
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">Telemedicina</h3>
+
+                                    <p>Consultas médicas virtuales para mayor comodidad y accesibilidad. Seguimiento de tratamientos desde la comodidad de su hogar.</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="bi-person timeline-icon"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>Horario Extendido</time>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding pb-0" id="reviews">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <h2 class="text-center mb-lg-5 mb-4">Nuestros Pacientes</h2>
+
+                            <div class="owl-carousel reviews-carousel">
+
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <div class="reviews-stars">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star"></i>
+                                    </div>
+
+                                    <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Excelente Atención Médica</strong></p>
+
+                                    <p class="reviews-text w-100">El Dr. García y su equipo brindan una atención excepcional. Me siento muy cómoda y confiada con el tratamiento recibido.</p>
+
+                                    <img src="images/reviews/beautiful-woman-face-portrait-brown-background.jpeg" class="img-fluid reviews-image" alt="María González, paciente satisfecha del centro médico">
+
+                                    <figcaption class="ms-4">
+                                        <strong>María González</strong>
+
+                                        <span class="text-muted">Paciente</span>
+                                    </figcaption>
+                                </figure>
+
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <div class="reviews-stars">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star"></i>
+                                    </div>
+
+                                    <p class="text-primary d-block mt-2 mb-0 w-100"><strong>¡El doctor se preocupa por todos!</strong></p>
+
+                                    <p class="reviews-text w-100">La atención personalizada y el seguimiento constante hacen la diferencia. Recomiendo ampliamente este centro médico.</p>
+
+                                    <img src="images/reviews/senior-man-wearing-white-face-mask-covid-19-campaign-with-design-space.jpeg" class="img-fluid reviews-image" alt="Carlos Mendoza, paciente satisfecho con los servicios médicos">
+
+                                    <figcaption class="ms-4">
+                                        <strong>Carlos Mendoza</strong>
+
+                                        <span class="text-muted">Paciente Recuperado</span>
+                                    </figcaption>
+                                </figure>
+
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <div class="reviews-stars">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+
+                                    <p class="text-primary d-block mt-2 mb-0 w-100"><strong>¡Excelentes servicios!</strong></p>
+
+                                    <p class="reviews-text w-100">Instalaciones modernas, personal capacitado y atención de calidad. Sin duda el mejor centro médico de la zona.</p>
+
+                                    <img src="images/reviews/portrait-british-woman.jpeg" class="img-fluid reviews-image" alt="Laura Rodríguez, paciente nueva satisfecha con la atención">
+
+                                    <figcaption class="ms-4">
+                                        <strong>Laura Rodríguez</strong>
+
+                                        <span class="text-muted">Paciente Nueva</span>
+                                    </figcaption>
+                                </figure>
+
+                                <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                    <div class="reviews-stars">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star"></i>
+                                        <i class="bi-star"></i>
+                                    </div>
+
+                                    <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Los Mejores Consejos</strong></p>
+
+                                    <p class="reviews-text w-100">El Dr. García siempre toma el tiempo necesario para explicar todo claramente y dar los mejores consejos de salud.</p>
+
+                                    <img src="images/reviews/woman-wearing-mask-face-closeup-covid-19-green-background.jpeg" class="img-fluid reviews-image" alt="Ana Martínez, paciente en recuperación satisfecha con el tratamiento">
+
+                                    <figcaption class="ms-4">
+                                        <strong>Ana Martínez</strong>
+
+                                        <span class="text-muted">En Recuperación</span>
+                                    </figcaption>
+                                </figure>
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding" id="booking">
+                <div class="container">
+                    <div class="row">
+                    
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="booking-form">
+                                
+                                <h2 class="text-center mb-lg-3 mb-2">Reservar una Cita</h2>
+                            
+                                <form role="form" action="process-booking.php" method="post" id="bookingForm">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12">
+                                            <input type="text" name="name" id="name" class="form-control" placeholder="Nombre completo" required>
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Correo electrónico" required>
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="tel" name="phone" id="phone" class="form-control" placeholder="Teléfono: 123-456-7890 o 1234567890" title="Ingrese su número de teléfono (10 dígitos mínimo)">
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="date" name="date" id="date" value="" class="form-control">
+
+                                        </div>
+
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="5" id="message" name="message" placeholder="Mensaje adicional"></textarea>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                                            <button type="submit" class="form-control" id="submit-button">Reservar Ahora</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- CONTACT SECTION WITH MAP -->
+        <section class="contact-section section-padding" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center mb-lg-5 mb-4" data-translate="contact.title">Ubicación y Contacto</h2>
+                    </div>
+
+                    <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                        <div class="contact-info">
+                            <h4 class="mb-4" data-translate="contact.info.title">Información de Contacto</h4>
+
+                            <div class="contact-item mb-3">
+                                <i class="bi-geo-alt-fill me-3"></i>
+                                <div>
+                                    <strong data-translate="contact.address.label">Dirección:</strong><br>
+                                    <span data-translate="contact.address.full">Av. Insurgentes Sur 1457, Col. San José Insurgentes, CDMX 03900</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-item mb-3">
+                                <i class="bi-telephone-fill me-3"></i>
+                                <div>
+                                    <strong data-translate="contact.phone.label">Teléfono:</strong><br>
+                                    <a href="tel:+52-55-5661-8420" data-translate="contact.phone.number">55 5661-8420</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item mb-3">
+                                <i class="bi-envelope-fill me-3"></i>
+                                <div>
+                                    <strong data-translate="contact.email.label">Email:</strong><br>
+                                    <a href="mailto:contacto@centromedicosanrafael.com" data-translate="contact.email.address">contacto@centromedicosanrafael.com</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item mb-3">
+                                <i class="bi-clock-fill me-3"></i>
+                                <div>
+                                    <strong data-translate="contact.hours.label">Horarios:</strong><br>
+                                    <span data-translate="contact.hours.weekdays">Lun - Vie: 8:00 AM - 8:00 PM</span><br>
+                                    <span data-translate="contact.hours.saturday">Sáb: 9:00 AM - 2:00 PM</span><br>
+                                    <span data-translate="contact.hours.sunday">Dom: Cerrado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-12">
+                        <div class="map-container">
+                            <h4 class="mb-4" data-translate="contact.map.title">Nuestra Ubicación</h4>
+                            <!-- Google Maps Embed -->
+                            <div class="map-responsive">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.8234567890123!2d-99.1625368!3d19.3687794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5b5b5b5%3A0x1234567890abcdef!2sAv.%20Insurgentes%20Sur%201457%2C%20San%20Jos%C3%A9%20Insurgentes%2C%20CDMX!5e0!3m2!1ses!2smx!4v1234567890123!5m2!1ses!2smx"
+                                    width="100%"
+                                    height="350"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-5 me-auto col-12">
+                        <h5 class="mb-lg-4 mb-3" data-translate="footer.hours.title">Horarios de Atención</h5>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex">
+                                <span data-translate="footer.hours.sunday">Domingo: Cerrado</span>
+                            </li>
+
+                            <li class="list-group-item d-flex">
+                                <span data-translate="footer.hours.weekdays">Lunes a Viernes</span>
+                                <span data-translate="footer.hours.weekdaysTime">8:00 AM - 8:00 PM</span>
+                            </li>
+
+                            <li class="list-group-item d-flex">
+                                <span data-translate="footer.hours.saturday">Sábado</span>
+                                <span data-translate="footer.hours.saturdayTime">9:00 AM - 2:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 col-12 my-4 my-lg-0">
+                        <h5 class="mb-lg-4 mb-3" data-translate="footer.clinic.title">Centro Médico San Rafael</h5>
+
+                        <p><a href="mailto:contacto@centromedicosanrafael.com" onclick="trackEmailClick()" data-translate="footer.clinic.email">contacto@centromedicosanrafael.com</a></p>
+
+                        <p data-translate="footer.clinic.address">Av. Insurgentes Sur 1457, Col. San José Insurgentes, CDMX 03900</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 ms-auto">
+                        <h5 class="mb-lg-4 mb-3" data-translate="footer.social.title">Redes Sociales</h5>
+
+                        <ul class="social-icon">
+                            <li><a href="#" class="social-icon-link bi-facebook"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-twitter"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-12 ms-auto mt-4 mt-lg-0">
+                        <p class="copyright-text" data-translate="footer.copyright">Copyright © Centro Médico San Rafael 2024
+                        <br><br>Design: <a href="https://templatemo.com" target="_parent">TemplateMo</a></p>
+                    </div>
+
+                </div>
+            </section>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/scrollspy.min.js"></script>
+        <script src="js/custom.js"></script>
+
+        <!-- LANGUAGE SYSTEM -->
+        <script src="js/translations.js"></script>
+        <script src="js/language-manager.js"></script>
+
+        <!-- DARK MODE SYSTEM -->
+        <script src="js/dark-mode.js"></script>
+
+        <!-- UNIFIED ANIMATIONS SYSTEM -->
+        <script src="js/simple-animations.js"></script>
+
+        <!-- FORM HANDLER SYSTEM -->
+        <script src="js/form-handler.js"></script>
+
+        <!-- COOKIE CONSENT SYSTEM -->
+        <script src="js/cookie-consent.js"></script>
+
+        <!-- IMAGE OPTIMIZER SYSTEM -->
+        <script src="js/image-optimizer.js"></script>
+
+        <!-- SEO OPTIMIZER SYSTEM -->
+        <script src="js/seo-optimizer.js"></script>
+
+        <!-- ACCESSIBILITY ANALYZER -->
+        <script src="js/accessibility-analyzer.js"></script>
+
+        <!-- ACCESSIBILITY FIXER -->
+        <script src="js/accessibility-fixer.js"></script>
+
+        <!-- SECURITY ANALYZER -->
+        <script src="js/security-analyzer.js"></script>
+
+        <!-- SECURITY PROTECTOR -->
+        <script src="js/security-protector.js"></script>
+
+        <!-- COOKIE CONSENT BANNER -->
+        <div class="cookie-banner" id="cookieBanner">
+            <div class="cookie-content">
+                <div class="cookie-text">
+                    <h4>🍪 Uso de Cookies</h4>
+                    <p>Utilizamos cookies para mejorar su experiencia, analizar el tráfico del sitio y personalizar el contenido. Al continuar navegando, acepta nuestro uso de cookies.</p>
+                </div>
+                <div class="cookie-buttons">
+                    <button class="btn-cookie-accept" onclick="acceptCookies()">
+                        ✅ Aceptar Todas
+                    </button>
+                    <button class="btn-cookie-essential" onclick="acceptEssentialOnly()">
+                        ⚙️ Solo Esenciales
+                    </button>
+                    <button class="btn-cookie-settings" onclick="showCookieSettings()">
+                        🔧 Configurar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- COOKIE SETTINGS MODAL -->
+        <div class="cookie-modal" id="cookieModal">
+            <div class="cookie-modal-content">
+                <div class="cookie-modal-header">
+                    <h3>🔧 Configuración de Cookies</h3>
+                    <button class="cookie-modal-close" onclick="closeCookieSettings()">×</button>
+                </div>
+                <div class="cookie-modal-body">
+                    <div class="cookie-category">
+                        <div class="cookie-category-header">
+                            <h4>🔒 Cookies Esenciales</h4>
+                            <label class="cookie-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="cookie-slider"></span>
+                            </label>
+                        </div>
+                        <p>Necesarias para el funcionamiento básico del sitio web. No se pueden desactivar.</p>
+                    </div>
+
+                    <div class="cookie-category">
+                        <div class="cookie-category-header">
+                            <h4>📊 Cookies de Análisis</h4>
+                            <label class="cookie-switch">
+                                <input type="checkbox" id="analyticsCookies" checked>
+                                <span class="cookie-slider"></span>
+                            </label>
+                        </div>
+                        <p>Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web (Google Analytics).</p>
+                    </div>
+
+                    <div class="cookie-category">
+                        <div class="cookie-category-header">
+                            <h4>🎯 Cookies de Marketing</h4>
+                            <label class="cookie-switch">
+                                <input type="checkbox" id="marketingCookies">
+                                <span class="cookie-slider"></span>
+                            </label>
+                        </div>
+                        <p>Utilizadas para mostrar anuncios relevantes y medir la efectividad de campañas publicitarias.</p>
+                    </div>
+                </div>
+                <div class="cookie-modal-footer">
+                    <button class="btn-cookie-save" onclick="saveCookiePreferences()">
+                        💾 Guardar Preferencias
+                    </button>
+                    <a href="#privacy-policy" class="cookie-privacy-link">📄 Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- WHATSAPP BUSINESS BUTTON -->
+        <div class="whatsapp-float" id="whatsappFloat">
+            <a href="https://wa.me/5255566184200?text=Hola%2C%20soy%20paciente%20del%20Centro%20M%C3%A9dico%20San%20Rafael.%20Me%20interesa%20agendar%20una%20cita%20m%C3%A9dica.%20%C2%BFPodr%C3%ADan%20ayudarme%3F"
+               target="_blank"
+               class="whatsapp-button"
+               title="Contactar por WhatsApp"
+               onclick="trackWhatsAppClick()">
+                <i class="bi-whatsapp"></i>
+                <span class="whatsapp-text">¿Necesitas ayuda?</span>
+            </a>
+        </div>
+
+        <!-- PWA SERVICE WORKER -->
+        <script>
+            // Registrar Service Worker para PWA
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js')
+                        .then((registration) => {
+                            console.log('✅ PWA: Service Worker registrado correctamente');
+
+                            // Verificar si hay actualizaciones
+                            registration.addEventListener('updatefound', () => {
+                                const newWorker = registration.installing;
+                                newWorker.addEventListener('statechange', () => {
+                                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                        // Hay una nueva versión disponible
+                                        console.log('🔄 PWA: Nueva versión disponible');
+                                        // Aquí podrías mostrar un mensaje al usuario
+                                    }
+                                });
+                            });
+                        })
+                        .catch((error) => {
+                            console.error('❌ PWA: Error registrando Service Worker:', error);
+                        });
+                });
+            } else {
+                console.log('⚠️ PWA: Service Worker no soportado en este navegador');
+            }
+
+            // Detectar cuando la app se instala
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                console.log('📱 PWA: App lista para instalar');
+                e.preventDefault();
+                deferredPrompt = e;
+
+                // Aquí podrías mostrar un botón de "Instalar App"
+                // Por ahora solo lo logueamos
+            });
+
+            // Detectar cuando la app se instala exitosamente
+            window.addEventListener('appinstalled', (e) => {
+                console.log('🎉 PWA: App instalada exitosamente');
+
+                // Track en Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'pwa_installed', {
+                        event_category: 'PWA',
+                        event_label: 'app_installed',
+                        value: 1
+                    });
+                }
+            });
+        </script>
+
+<!--
+
+TemplateMo 566 Medic Care
+
+https://templatemo.com/tm-566-medic-care
+
+-->
+    </body>
+</html>

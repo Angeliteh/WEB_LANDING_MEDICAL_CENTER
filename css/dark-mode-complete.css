@@ -1,0 +1,1319 @@
+/*
+Complete Dark Mode & Modern Improvements System
+Single file containing all enhancements for maintainability
+Replaces: dark-mode.css + unified-improvements.css + modern-design-system.css + visual-improvements.css
+*/
+
+/* ===================================
+   DESIGN SYSTEM VARIABLES
+   =================================== */
+
+:root {
+  /* ===== IMPROVED LIGHT MODE COLORS ===== */
+  /* Better contrast and professional appearance */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;          /* Slightly cooler, more professional */
+  --text-primary: #1F2937;          /* Darker for better readability */
+  --text-secondary: #4B5563;        /* Much better contrast */
+  --text-muted: #6B7280;            /* Improved from original #9ca3af */
+  --border-primary: #D1D5DB;        /* More visible than #eaeaea */
+  --accent-color: #247cff;
+
+  /* Additional contrast colors */
+  --text-high-contrast: #111827;    /* For important text */
+  --border-subtle: #E5E7EB;         /* For subtle borders */
+  --bg-elevated: #FFFFFF;           /* For cards and elevated elements */
+  
+  /* Modern spacing system */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  
+  /* Modern border radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Modern shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.12);
+  
+  /* Modern transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* ===== CENTRALIZED VARIABLE MAPPING ===== */
+  /* Map original template variables to new system */
+  --white-color: var(--bg-primary);
+  --section-bg-color: var(--bg-secondary);
+  --dark-color: var(--text-high-contrast);     /* Use high contrast for headings */
+  --title-color: var(--text-secondary);        /* Improved contrast */
+  --p-color: var(--text-muted);                /* Better readability */
+  --border-color: var(--border-primary);       /* More visible borders */
+  --primary-color: var(--accent-color);
+}
+
+/* ===================================
+   DARK MODE VARIABLES
+   =================================== */
+
+[data-theme="dark"] {
+  /* ===== OPTIMIZED DARK MODE COLORS ===== */
+  --bg-primary: #111827;              /* Deeper, more professional */
+  --bg-secondary: #1F2937;            /* Better contrast */
+  --text-primary: #F9FAFB;            /* Pure white for readability */
+  --text-secondary: #E5E7EB;          /* Excellent contrast */
+  --text-muted: #9CA3AF;              /* Balanced visibility */
+  --border-primary: #374151;          /* Visible but not harsh */
+  --accent-color: #3B82F6;            /* Slightly adjusted blue */
+
+  /* Dark mode specific colors */
+  --text-high-contrast: #FFFFFF;      /* Maximum contrast for headings */
+  --border-subtle: #4B5563;           /* For subtle borders */
+  --bg-elevated: #1F2937;             /* For cards and elevated elements */
+  
+  /* Dark mode shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* ===================================
+   THEME TOGGLE BUTTON
+   =================================== */
+
+.theme-toggle {
+  position: relative;
+  background: none;
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-left: 15px;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.theme-toggle .icon {
+  font-size: 16px;
+  transition: var(--transition-normal);
+}
+
+.theme-toggle .icon-sun {
+  display: block;
+}
+
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+  display: block;
+}
+
+/* ===================================
+   SMOOTH THEME TRANSITIONS
+   =================================== */
+
+* {
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal) !important;
+}
+
+/* Exclude animated elements from global transitions */
+.animated-item,
+.animated-info,
+.timeline-icons,
+.timeline-icons::before,
+.timeline-icon {
+  /* Don't interfere with original animations */
+}
+
+/* ===================================
+   WHATSAPP BUSINESS BUTTON
+   =================================== */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  animation: whatsappPulse 2s infinite;
+}
+
+.whatsapp-button {
+  display: flex !important;
+  align-items: center !important;
+  background: #25D366 !important;
+  color: white !important;
+  padding: 12px 16px !important;
+  border-radius: 50px !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4) !important;
+  transition: all var(--transition-normal) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  max-width: 60px !important;
+  overflow: hidden !important;
+}
+
+.whatsapp-button:hover {
+  background: #128C7E !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6) !important;
+  max-width: 200px !important;
+}
+
+.whatsapp-button i {
+  font-size: 24px !important;
+  margin-right: 0 !important;
+  transition: margin var(--transition-normal) !important;
+}
+
+.whatsapp-button:hover i {
+  margin-right: 8px !important;
+}
+
+.whatsapp-text {
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  transition: opacity var(--transition-normal) !important;
+}
+
+.whatsapp-button:hover .whatsapp-text {
+  opacity: 1 !important;
+}
+
+/* Animación de pulso sutil */
+@keyframes whatsappPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .whatsapp-button {
+    padding: 10px 12px !important;
+    max-width: 50px !important;
+  }
+
+  .whatsapp-button:hover {
+    max-width: 180px !important;
+  }
+
+  .whatsapp-button i {
+    font-size: 20px !important;
+  }
+
+  .whatsapp-text {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-button:hover {
+    max-width: 160px !important;
+  }
+
+  .whatsapp-text {
+    font-size: 12px !important;
+  }
+}
+
+/* ===================================
+   COOKIE CONSENT BANNER
+   =================================== */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-elevated) !important;
+  border-top: 3px solid var(--accent-color) !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15) !important;
+  z-index: 9999;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.cookie-banner.show {
+  transform: translateY(0) !important;
+}
+
+.cookie-content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 20px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  gap: 20px !important;
+}
+
+.cookie-text {
+  flex: 1 !important;
+}
+
+.cookie-text h4 {
+  color: var(--text-high-contrast) !important;
+  margin: 0 0 8px 0 !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+}
+
+.cookie-text p {
+  color: var(--text-secondary) !important;
+  margin: 0 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.cookie-buttons {
+  display: flex !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.cookie-buttons button {
+  padding: 10px 16px !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  transition: all var(--transition-normal) !important;
+  white-space: nowrap !important;
+}
+
+.btn-cookie-accept {
+  background: var(--accent-color) !important;
+  color: white !important;
+}
+
+.btn-cookie-accept:hover {
+  background: #1e6bff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(36, 124, 255, 0.3) !important;
+}
+
+.btn-cookie-essential {
+  background: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-primary) !important;
+}
+
+.btn-cookie-essential:hover {
+  background: var(--border-primary) !important;
+  color: var(--text-high-contrast) !important;
+}
+
+.btn-cookie-settings {
+  background: transparent !important;
+  color: var(--accent-color) !important;
+  border: 1px solid var(--accent-color) !important;
+}
+
+.btn-cookie-settings:hover {
+  background: var(--accent-color) !important;
+  color: white !important;
+}
+
+/* Responsive cookie banner */
+@media (max-width: 768px) {
+  .cookie-content {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 16px !important;
+  }
+
+  .cookie-buttons {
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  .cookie-buttons button {
+    flex: 1 !important;
+    min-width: 120px !important;
+  }
+}
+
+/* ===================================
+   COOKIE SETTINGS MODAL
+   =================================== */
+
+.cookie-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7) !important;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px) !important;
+}
+
+.cookie-modal.show {
+  display: flex !important;
+}
+
+.cookie-modal-content {
+  background: var(--bg-elevated) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-xl) !important;
+  max-width: 500px !important;
+  width: 90% !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  animation: modalSlideIn 0.3s ease-out !important;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.cookie-modal-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 20px !important;
+  border-bottom: 1px solid var(--border-primary) !important;
+}
+
+.cookie-modal-header h3 {
+  color: var(--text-high-contrast) !important;
+  margin: 0 !important;
+  font-size: 20px !important;
+}
+
+.cookie-modal-close {
+  background: none !important;
+  border: none !important;
+  font-size: 24px !important;
+  color: var(--text-muted) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  width: 30px !important;
+  height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--radius-md) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.cookie-modal-close:hover {
+  background: var(--bg-secondary) !important;
+  color: var(--text-high-contrast) !important;
+}
+
+.cookie-modal-body {
+  padding: 20px !important;
+}
+
+.cookie-category {
+  margin-bottom: 24px !important;
+  padding: 16px !important;
+  background: var(--bg-secondary) !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--border-subtle) !important;
+}
+
+.cookie-category-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 8px !important;
+}
+
+.cookie-category h4 {
+  color: var(--text-high-contrast) !important;
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.cookie-category p {
+  color: var(--text-secondary) !important;
+  margin: 0 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Cookie toggle switches */
+.cookie-switch {
+  position: relative !important;
+  display: inline-block !important;
+  width: 50px !important;
+  height: 24px !important;
+}
+
+.cookie-switch input {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.cookie-slider {
+  position: absolute !important;
+  cursor: pointer !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: var(--border-primary) !important;
+  transition: 0.3s !important;
+  border-radius: 24px !important;
+}
+
+.cookie-slider:before {
+  position: absolute !important;
+  content: "" !important;
+  height: 18px !important;
+  width: 18px !important;
+  left: 3px !important;
+  bottom: 3px !important;
+  background: white !important;
+  transition: 0.3s !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.cookie-switch input:checked + .cookie-slider {
+  background: var(--accent-color) !important;
+}
+
+.cookie-switch input:checked + .cookie-slider:before {
+  transform: translateX(26px) !important;
+}
+
+.cookie-switch input:disabled + .cookie-slider {
+  background: var(--text-muted) !important;
+  cursor: not-allowed !important;
+}
+
+.cookie-modal-footer {
+  padding: 20px !important;
+  border-top: 1px solid var(--border-primary) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+.btn-cookie-save {
+  background: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.btn-cookie-save:hover {
+  background: #1e6bff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(36, 124, 255, 0.3) !important;
+}
+
+.cookie-privacy-link {
+  color: var(--accent-color) !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  transition: color var(--transition-normal) !important;
+}
+
+.cookie-privacy-link:hover {
+  color: var(--text-high-contrast) !important;
+  text-decoration: underline !important;
+}
+
+/* ===================================
+   TIMELINE SYSTEM IMPROVEMENTS
+   =================================== */
+
+/* Fix timeline-date dark mode issue */
+.timeline-date,
+.timeline-date time {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  transition: color var(--transition-normal);
+}
+
+/* Modern timeline content with better definition */
+.timeline-content {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-primary) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: all var(--transition-normal) !important;
+  overflow: hidden;
+  /* Add subtle inner shadow for more definition */
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.timeline-content:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-xl) !important;
+}
+
+/* Timeline headers */
+.timeline-nodes h3 {
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+  padding: var(--spacing-lg) var(--spacing-xl) !important;
+  margin: 0 !important;
+  font-weight: 600;
+  background: var(--accent-color) !important;
+  color: white !important;
+}
+
+/* Timeline content text */
+.timeline-content p {
+  padding: var(--spacing-lg) var(--spacing-xl) !important;
+  color: var(--text-primary) !important;
+  line-height: 1.6;
+  margin: 0 !important;
+}
+
+/* Timeline icons - Restore original behavior with subtle improvements */
+.timeline-icons::before {
+  background: var(--bg-primary) !important;
+  border: 3px solid var(--accent-color) !important;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+  transition: box-shadow var(--transition-normal) !important;
+  /* Keep original transform - this is crucial! */
+  transform: translate(-50%, 0) !important;
+}
+
+.timeline-icons:hover::before {
+  /* Only enhance shadow, keep original positioning */
+  box-shadow: 0 1rem 4rem rgba(0,0,0,.25) !important;
+}
+
+.timeline-icon {
+  color: var(--accent-color) !important;
+  transition: color var(--transition-normal) !important;
+  /* Keep original positioning */
+  text-align: center !important;
+  line-height: 80px !important;
+}
+
+.timeline-icons:hover .timeline-icon {
+  /* Subtle color enhancement only */
+  color: var(--accent-color) !important;
+}
+
+/* ===================================
+   BOOKING FORM IMPROVEMENTS
+   =================================== */
+
+/* Modern booking form container with better definition */
+.booking-form {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-primary) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: var(--spacing-2xl) !important;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.booking-form:hover {
+  box-shadow: var(--shadow-xl) !important;
+}
+
+/* Form controls modern style */
+.booking-form .form-control {
+  border: 2px solid var(--border-primary) !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  font-size: 16px !important;
+  transition: all var(--transition-normal) !important;
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.booking-form .form-control:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px rgba(36, 124, 255, 0.1) !important;
+  transform: translateY(-1px) !important;
+  outline: none !important;
+}
+
+.booking-form .form-control::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Submit button modern style */
+#submit-button {
+  background: var(--accent-color) !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  color: white !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: all var(--transition-normal) !important;
+  cursor: pointer;
+}
+
+#submit-button:hover {
+  background: #1e6bdb !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-xl) !important;
+}
+
+/* ===================================
+   BUTTON SYSTEM IMPROVEMENTS
+   =================================== */
+
+/* Modern custom link button */
+.custom-link {
+  border-radius: var(--radius-md) !important;
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: var(--spacing-sm) !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: all var(--transition-normal) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-link:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-xl) !important;
+  text-decoration: none !important;
+}
+
+/* ===================================
+   REVIEWS SYSTEM IMPROVEMENTS
+   =================================== */
+
+/* Modern review cards with enhanced definition */
+.reviews-thumb {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-primary) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: var(--spacing-xl) !important;
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.reviews-thumb:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-xl) !important;
+}
+
+/* Review text styling */
+.reviews-text {
+  color: var(--text-primary) !important;
+  line-height: 1.6 !important;
+  margin-bottom: var(--spacing-lg) !important;
+}
+
+/* Review images */
+.reviews-image {
+  border-radius: var(--radius-full) !important;
+  border: 3px solid var(--border-primary) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.reviews-image:hover {
+  transform: scale(1.05) !important;
+  border-color: var(--accent-color) !important;
+}
+
+/* Fix patient names visibility */
+.reviews-thumb figcaption {
+  color: var(--text-primary) !important;
+}
+
+.reviews-thumb figcaption strong {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+}
+
+.reviews-thumb figcaption .text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Fix center item styling for better contrast */
+.reviews-carousel .owl-item.active.center .reviews-thumb {
+  background: var(--accent-color) !important;
+  color: white !important;
+}
+
+.reviews-carousel .owl-item.active.center .reviews-thumb figcaption,
+.reviews-carousel .owl-item.active.center .reviews-thumb figcaption strong {
+  color: white !important;
+}
+
+.reviews-carousel .owl-item.active.center .reviews-thumb .text-muted {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.reviews-carousel .owl-item.active.center .reviews-text {
+  color: white !important;
+}
+
+/* ===================================
+   CAROUSEL IMPROVEMENTS
+   =================================== */
+
+/* Smoother carousel transitions */
+.owl-carousel .owl-stage {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Hide original Bootstrap icons and use simple arrows */
+.reviews-carousel .owl-nav span::before {
+  display: none !important;
+}
+
+/* Style the simple arrow buttons */
+.reviews-carousel .owl-nav button {
+  background: var(--bg-primary) !important;
+  border: 2px solid var(--accent-color) !important;
+  border-radius: var(--radius-full) !important;
+  transition: all var(--transition-normal) !important;
+  box-shadow: var(--shadow-sm) !important;
+  width: 45px !important;
+  height: 45px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.reviews-carousel .owl-nav button:hover {
+  background: var(--accent-color) !important;
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.reviews-carousel .owl-nav button span {
+  color: var(--accent-color) !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  transition: color var(--transition-normal) !important;
+  background: none !important;
+  border: none !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: 1 !important;
+}
+
+.reviews-carousel .owl-nav button:hover span {
+  color: white !important;
+}
+
+/* Improve carousel item spacing and transitions */
+.reviews-carousel .owl-item {
+  transition: opacity 0.6s ease, transform 0.6s ease !important;
+}
+
+.reviews-carousel .owl-item:not(.active) {
+  opacity: 0.7 !important;
+  transform: scale(0.95) !important;
+}
+
+.reviews-carousel .owl-item.active {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.reviews-carousel .owl-item.active.center {
+  transform: scale(1.05) !important;
+  z-index: 10 !important;
+}
+
+/* Responsive navigation */
+@media (max-width: 768px) {
+  .reviews-carousel .owl-nav button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .reviews-carousel .owl-nav button span {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .reviews-carousel .owl-nav button {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  .reviews-carousel .owl-nav button span {
+    font-size: 18px !important;
+  }
+}
+
+/* ===================================
+   NAVBAR IMPROVEMENTS
+   =================================== */
+
+.navbar {
+  background-color: var(--bg-elevated) !important;
+  border-bottom: 1px solid var(--border-primary) !important;
+  box-shadow: var(--shadow-md) !important;
+  backdrop-filter: blur(10px) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+/* Remove scroll animation - always solid background */
+.navbar.scrolled {
+  /* No additional changes - navbar is always solid now */
+}
+
+[data-theme="dark"] .navbar {
+  background-color: var(--bg-elevated) !important;
+  border-bottom-color: var(--border-primary) !important;
+}
+
+/* ===================================
+   HERO SECTION IMPROVEMENTS
+   =================================== */
+
+/* Ensure text animation is always infinite with proper sequencing and contrast */
+.heroText .animated-info .animated-item,
+.heroText .animated-item,
+.animated-info .animated-item {
+  animation: BottomTotop 9s linear infinite !important;
+  color: #e11d48 !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  font-weight: 600 !important;
+}
+
+.heroText .animated-info .animated-item:nth-child(2n+2),
+.heroText .animated-item:nth-child(2n+2),
+.animated-info .animated-item:nth-child(2n+2) {
+  animation-delay: 3s !important;
+}
+
+.heroText .animated-info .animated-item:nth-child(3n+3),
+.heroText .animated-item:nth-child(3n+3),
+.animated-info .animated-item:nth-child(3n+3) {
+  animation-delay: 6s !important;
+}
+
+/* Hero Title Styling - More Compact */
+.hero-title {
+  font-size: 2.8rem !important;
+  font-weight: 700 !important;
+  line-height: 1.0 !important;
+  color: var(--text-high-contrast) !important;
+  margin-bottom: 0.5rem !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+.hero-title-main {
+  display: block !important;
+  margin-bottom: 0.1rem !important;
+}
+
+.hero-description {
+  font-size: 0.95rem !important;
+  line-height: 1.4 !important;
+  color: var(--text-high-contrast) !important;
+  max-width: 480px !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Hero Actions - Compact */
+.hero-actions {
+  margin-top: 0.75rem !important;
+  text-align: center !important;
+}
+
+.hero-cta-minimal {
+  display: inline-block !important;
+}
+
+.btn-hero-minimal {
+  background: var(--accent-color) !important;
+  color: white !important;
+  border: 1px solid var(--accent-color) !important;
+  padding: 0.625rem 1.75rem !important;
+  border-radius: 25px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  transition: all var(--transition-normal) !important;
+  box-shadow: 0 3px 12px rgba(36, 124, 255, 0.3) !important;
+}
+
+.btn-hero-minimal:hover {
+  background: #1e6bff !important;
+  color: white !important;
+  border-color: #1e6bff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(36, 124, 255, 0.4) !important;
+}
+
+.btn-hero-minimal i {
+  font-size: 0.95rem !important;
+  transition: transform var(--transition-normal) !important;
+}
+
+.btn-hero-minimal:hover i {
+  transform: scale(1.05) !important;
+}
+
+/* Responsive adjustments - Compact */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem !important;
+    line-height: 1.0 !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .hero-description {
+    font-size: 0.9rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .hero-actions {
+    margin-top: 0.6rem !important;
+  }
+
+  .btn-hero-minimal {
+    padding: 0.5rem 1.25rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .heroText {
+    padding: var(--spacing-lg) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .hero-description {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .hero-actions {
+    margin-top: 0.5rem !important;
+  }
+
+  .btn-hero-minimal {
+    padding: 0.45rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .heroText {
+    padding: var(--spacing-md) !important;
+  }
+}
+
+.heroText {
+  background: rgba(255, 255, 255, 0.37) !important;
+  backdrop-filter: blur(3px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: var(--spacing-xl) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="dark"] .heroText {
+  background: rgba(26, 26, 26, 0.40) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ===================================
+   FEATURED CIRCLE IMPROVEMENTS
+   =================================== */
+
+.featured-circle {
+  border: 3px solid var(--border-primary) !important;
+  box-shadow: var(--shadow-lg) !important;
+  transition: all var(--transition-normal) !important;
+  background: var(--bg-primary) !important;
+}
+
+.featured-circle:hover {
+  transform: scale(1.05) !important;
+  box-shadow: var(--shadow-xl) !important;
+  border-color: var(--accent-color) !important;
+}
+
+/* ===================================
+   IMPROVED TEXT CONTRAST SYSTEM
+   =================================== */
+
+/* Headings with maximum contrast */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-high-contrast) !important;
+  font-weight: 600 !important;
+}
+
+/* Body text with good contrast */
+p, span, div, li {
+  color: var(--text-secondary) !important;
+}
+
+/* Muted text still readable */
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* High contrast text class for important elements */
+.text-high-contrast {
+  color: var(--text-high-contrast) !important;
+}
+
+/* Improved navbar text */
+.navbar-nav .nav-link {
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Better timeline date visibility */
+.timeline-date,
+.timeline-date time {
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+}
+
+/* Improved form labels */
+.form-label {
+  color: var(--text-high-contrast) !important;
+  font-weight: 500 !important;
+}
+
+/* ===================================
+   FUNCTIONAL CONTACT LINKS
+   =================================== */
+
+/* Click-to-call phone styling */
+.contact-phone a {
+  color: var(--accent-color) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.contact-phone a:hover {
+  color: var(--text-high-contrast) !important;
+  text-decoration: underline !important;
+}
+
+/* Email links styling */
+a[href^="mailto:"] {
+  color: var(--accent-color) !important;
+  text-decoration: none !important;
+  transition: all var(--transition-normal) !important;
+}
+
+a[href^="mailto:"]:hover {
+  color: var(--text-high-contrast) !important;
+  text-decoration: underline !important;
+}
+
+/* ===================================
+   CONTACT SECTION WITH MAP
+   =================================== */
+
+.contact-section {
+  background: var(--bg-secondary) !important;
+}
+
+.contact-info {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-primary) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: var(--spacing-2xl) !important;
+  box-shadow: var(--shadow-md) !important;
+  height: 100%;
+}
+
+.contact-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  padding: var(--spacing-md) 0 !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+.contact-item:last-child {
+  border-bottom: none !important;
+}
+
+.contact-item i {
+  color: var(--accent-color) !important;
+  font-size: 1.2rem !important;
+  margin-top: 2px !important;
+}
+
+.contact-item strong {
+  color: var(--text-high-contrast) !important;
+  font-weight: 600 !important;
+}
+
+.map-container {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-primary) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: var(--spacing-2xl) !important;
+  box-shadow: var(--shadow-md) !important;
+  height: 100%;
+}
+
+.map-responsive {
+  border-radius: var(--radius-md) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.map-responsive iframe {
+  border-radius: var(--radius-md) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.map-responsive:hover iframe {
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* ===================================
+   DROPDOWN MENUS
+   =================================== */
+
+.dropdown-menu {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border-primary) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.dropdown-item {
+  color: var(--text-primary) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-secondary) !important;
+  color: var(--accent-color) !important;
+}
+
+/* ===================================
+   RESPONSIVE ADJUSTMENTS
+   =================================== */
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  
+  .booking-form {
+    padding: var(--spacing-xl) !important;
+  }
+  
+  .timeline-content:hover,
+  .reviews-thumb:hover {
+    transform: translateY(-2px) !important;
+  }
+  
+  .custom-link:hover,
+  #submit-button:hover {
+    transform: translateY(-1px) !important;
+  }
+}
+
+/* ===================================
+   HERO TEXT ANIMATION FIX
+   =================================== */
+
+/* Don't override the original animation - just ensure it works with dark mode */
+.animated-item {
+  color: var(--accent-color) !important;
+  /* Let the original CSS handle the animation */
+}
+
+/* ===================================
+   ACCESSIBILITY
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *:not(.animated-item) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Keep text animation for reduced motion users but slower and infinite */
+  .animated-item {
+    animation-duration: 12s !important;
+    animation-iteration-count: infinite !important;
+  }
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sin Conexión - Centro Médico</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #247cff 0%, #1e40af 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .offline-container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .offline-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .offline-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .offline-message {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .offline-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #247cff;
+        }
+        
+        .btn-primary:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .offline-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .emergency-info {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .emergency-phone {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fef2f2;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 480px) {
+            .offline-container {
+                padding: 30px 20px;
+            }
+            
+            .offline-icon {
+                font-size: 60px;
+            }
+            
+            .offline-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📱</div>
+        
+        <h1 class="offline-title">Sin Conexión a Internet</h1>
+        
+        <p class="offline-message">
+            No se puede conectar a internet en este momento. 
+            Algunas funciones pueden no estar disponibles.
+        </p>
+        
+        <div class="offline-actions">
+            <button class="btn btn-primary" onclick="window.location.reload()">
+                🔄 Intentar de Nuevo
+            </button>
+            
+            <button class="btn btn-secondary" onclick="goBack()">
+                ← Volver Atrás
+            </button>
+        </div>
+        
+        <div class="emergency-info">
+            <div>🚨 <strong>En caso de emergencia médica:</strong></div>
+            <div class="emergency-phone">📞 55 5661-8420</div>
+        </div>
+        
+        <div class="offline-info">
+            <p><strong>Centro Médico San Rafael</strong></p>
+            <p>Esta aplicación funciona parcialmente sin internet</p>
+        </div>
+    </div>
+    
+    <script>
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = '/';
+            }
+        }
+        
+        // Verificar conexión cada 5 segundos
+        setInterval(() => {
+            if (navigator.onLine) {
+                window.location.reload();
+            }
+        }, 5000);
+        
+        // Escuchar cuando se recupere la conexión
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>

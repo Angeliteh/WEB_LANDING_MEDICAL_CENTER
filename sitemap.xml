@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Página principal español -->
+  <url>
+    <loc>https://www.centromedico.com/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.centromedico.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.centromedico.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.centromedico.com/" />
+  </url>
+
+  <!-- Página principal inglés -->
+  <url>
+    <loc>https://www.centromedico.com/en/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.centromedico.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.centromedico.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.centromedico.com/" />
+  </url>
+  <url>
+    <loc>https://www.centromedico.com/#about</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.centromedico.com/#gallery</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.centromedico.com/#timeline</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.centromedico.com/#reviews</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.centromedico.com/#booking</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.centromedico.com/#contact</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>
