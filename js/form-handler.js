@@ -232,12 +232,14 @@ ${isBooking ? `• Fecha solicitada: ${new Date(formData.date).toLocaleDateStrin
                 
                 showMessage('error', errorMessage, container);
                 
-                // Log para debugging
-                console.error('Form submission error:', {
-                    status: xhr.status,
-                    statusText: xhr.statusText,
-                    responseText: xhr.responseText
-                });
+                // Log para debugging solo en desarrollo
+                if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                    console.error('Form submission error:', {
+                        status: xhr.status,
+                        statusText: xhr.statusText,
+                        responseText: xhr.responseText
+                    });
+                }
             },
             complete: function() {
                 // Restaurar botón
@@ -321,5 +323,8 @@ ${isBooking ? `• Fecha solicitada: ${new Date(formData.date).toLocaleDateStrin
         setTimeout(() => { isSubmitting = false; }, 2000);
     });
 
-    console.log('✅ Form Handler System initialized');
+    // Solo log en desarrollo
+    if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+        console.log('✅ Form Handler System initialized');
+    }
 });

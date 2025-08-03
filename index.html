@@ -131,7 +131,10 @@
                 }
             });
 
-            console.log('📊 Google Analytics 4 initialized for Centro Médico');
+            // Solo mostrar en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('📊 Google Analytics 4 initialized for Centro Médico');
+            }
         </script>
 
         <!-- CSS FILES -->        
@@ -154,6 +157,11 @@
         <!-- COMPLETE DARK MODE & MODERN IMPROVEMENTS -->
         <link href="css/dark-mode-complete.css" rel="stylesheet">
 
+        <!-- FAVICON CONFIGURATION -->
+        <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-72x72.png">
+        <link rel="shortcut icon" href="icons/icon-96x96.png">
+
         <!-- PWA MANIFEST -->
         <link rel="manifest" href="manifest.json">
 
@@ -167,17 +175,12 @@
 
         <!-- PWA ICONS FOR APPLE -->
         <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180x180.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="icons/icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128x128.png">
 
         <!-- PWA THEME COLOR -->
         <meta name="theme-color" content="#247cff">
-<!--
 
-TemplateMo 566 Medic Care
-
-https://templatemo.com/tm-566-medic-care
-
--->
     </head>
     
     <body id="top">
@@ -679,8 +682,7 @@ https://templatemo.com/tm-566-medic-care
                     </div>
 
                     <div class="col-lg-3 col-12 ms-auto mt-4 mt-lg-0">
-                        <p class="copyright-text" data-translate="footer.copyright">Copyright © Centro Médico San Rafael 2024
-                        <br><br>Design: <a href="https://templatemo.com" target="_parent">TemplateMo</a></p>
+                        <p class="copyright-text" data-translate="footer.copyright">Copyright © Centro Médico San Rafael 2024<br><br>Todos los derechos reservados.</p>
                     </div>
 
                 </div>
@@ -688,6 +690,9 @@ https://templatemo.com/tm-566-medic-care
         </footer>
 
         <!-- JAVASCRIPT FILES -->
+        <!-- PRODUCTION MANAGER - DEBE SER EL PRIMERO -->
+        <script src="js/production-manager.js"></script>
+
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/owl.carousel.min.js"></script>
@@ -818,7 +823,10 @@ https://templatemo.com/tm-566-medic-care
                 window.addEventListener('load', () => {
                     navigator.serviceWorker.register('/sw.js')
                         .then((registration) => {
-                            console.log('✅ PWA: Service Worker registrado correctamente');
+                            // Solo log en desarrollo
+                            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                                console.log('✅ PWA: Service Worker registrado correctamente');
+                            }
 
                             // Verificar si hay actualizaciones
                             registration.addEventListener('updatefound', () => {
@@ -826,7 +834,10 @@ https://templatemo.com/tm-566-medic-care
                                 newWorker.addEventListener('statechange', () => {
                                     if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                                         // Hay una nueva versión disponible
-                                        console.log('🔄 PWA: Nueva versión disponible');
+                                        // Solo log en desarrollo
+                                        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                                            console.log('🔄 PWA: Nueva versión disponible');
+                                        }
                                         // Aquí podrías mostrar un mensaje al usuario
                                     }
                                 });
@@ -837,13 +848,19 @@ https://templatemo.com/tm-566-medic-care
                         });
                 });
             } else {
-                console.log('⚠️ PWA: Service Worker no soportado en este navegador');
+                // Solo log en desarrollo
+                if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                    console.log('⚠️ PWA: Service Worker no soportado en este navegador');
+                }
             }
 
             // Detectar cuando la app se instala
             let deferredPrompt;
             window.addEventListener('beforeinstallprompt', (e) => {
-                console.log('📱 PWA: App lista para instalar');
+                // Solo log en desarrollo
+                if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                    console.log('📱 PWA: App lista para instalar');
+                }
                 e.preventDefault();
                 deferredPrompt = e;
 
@@ -853,7 +870,10 @@ https://templatemo.com/tm-566-medic-care
 
             // Detectar cuando la app se instala exitosamente
             window.addEventListener('appinstalled', (e) => {
-                console.log('🎉 PWA: App instalada exitosamente');
+                // Solo log en desarrollo
+                if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                    console.log('🎉 PWA: App instalada exitosamente');
+                }
 
                 // Track en Google Analytics
                 if (typeof gtag !== 'undefined') {
@@ -864,14 +884,20 @@ https://templatemo.com/tm-566-medic-care
                     });
                 }
             });
+
+            // Marcar optimizaciones como completadas después de que todos los sistemas se carguen
+            setTimeout(() => {
+                if (window.OPTIMIZATION_CACHE && window.OPTIMIZATION_CACHE.needsRerun()) {
+                    window.OPTIMIZATION_CACHE.markCompleted();
+
+                    // Solo log en desarrollo
+                    if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                        console.log('✅ Todas las optimizaciones completadas y guardadas en cache');
+                    }
+                }
+            }, 3000); // Esperar 3 segundos para que todos los sistemas terminen
         </script>
 
-<!--
 
-TemplateMo 566 Medic Care
-
-https://templatemo.com/tm-566-medic-care
-
--->
     </body>
 </html>

@@ -12,7 +12,19 @@ class AccessibilityAnalyzer {
     }
 
     init() {
-        console.log('♿ Accessibility Analyzer iniciado - Examinando web...');
+        // Verificar si necesita ejecutarse
+        if (window.OPTIMIZATION_CACHE && !window.OPTIMIZATION_CACHE.needsRerun()) {
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('♿ Accessibility: Usando cache (ya optimizado)');
+            }
+            return;
+        }
+
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('♿ Accessibility Analyzer iniciado - Examinando web...');
+        }
         this.analyzeAll();
         this.generateReport();
     }
@@ -78,7 +90,10 @@ class AccessibilityAnalyzer {
             }
         });
         
-        console.log(`🖼️ Imágenes analizadas: ${images.length}, Problemas: ${imageIssues}`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`🖼️ Imágenes analizadas: ${images.length}, Problemas: ${imageIssues}`);
+        }
     }
 
     // 2. EXAMINAR FORMULARIOS
@@ -117,7 +132,10 @@ class AccessibilityAnalyzer {
             }
         });
         
-        console.log(`📝 Campos de formulario analizados: ${inputs.length}, Problemas: ${formIssues}`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`📝 Campos de formulario analizados: ${inputs.length}, Problemas: ${formIssues}`);
+        }
     }
 
     // 3. EXAMINAR NAVEGACIÓN
@@ -162,7 +180,10 @@ class AccessibilityAnalyzer {
             }
         });
         
-        console.log(`🧭 Elementos de navegación analizados, Problemas: ${navIssues}`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`🧭 Elementos de navegación analizados, Problemas: ${navIssues}`);
+        }
     }
 
     // 4. EXAMINAR COLORES Y CONTRASTE
@@ -186,7 +207,10 @@ class AccessibilityAnalyzer {
             colorIssues++;
         });
         
-        console.log(`🎨 Elementos de color analizados, Problemas: ${colorIssues}`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`🎨 Elementos de color analizados, Problemas: ${colorIssues}`);
+        }
     }
 
     // 5. EXAMINAR ESTRUCTURA HTML
@@ -222,7 +246,10 @@ class AccessibilityAnalyzer {
             });
         }
         
-        console.log(`🏗️ Estructura HTML analizada, Problemas: ${structureIssues}`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`🏗️ Estructura HTML analizada, Problemas: ${structureIssues}`);
+        }
     }
 
     // 6. EXAMINAR INTERACTIVIDAD
@@ -246,7 +273,10 @@ class AccessibilityAnalyzer {
             }
         });
         
-        console.log(`⚡ Elementos interactivos analizados, Problemas: ${interactivityIssues}`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`⚡ Elementos interactivos analizados, Problemas: ${interactivityIssues}`);
+        }
     }
 
     // MÉTODOS AUXILIARES
@@ -291,8 +321,11 @@ class AccessibilityAnalyzer {
         const penalty = (errorIssues * 10) + (warningIssues * 5);
         this.score = Math.max(0, this.maxScore - penalty);
         
-        console.log(`📊 Puntuación de Accesibilidad: ${this.score}/100`);
-        console.log(`❌ Errores: ${errorIssues}, ⚠️ Advertencias: ${warningIssues}`);
+        // Solo logs en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`📊 Puntuación de Accesibilidad: ${this.score}/100`);
+            console.log(`❌ Errores: ${errorIssues}, ⚠️ Advertencias: ${warningIssues}`);
+        }
     }
 
     // Generar reporte completo
@@ -307,12 +340,14 @@ class AccessibilityAnalyzer {
             recommendations: this.getRecommendations()
         };
         
-        // Mostrar resumen en consola
-        console.log('♿ REPORTE DE ACCESIBILIDAD:');
-        console.log(`📊 Puntuación: ${report.score}/100`);
-        console.log(`❌ Errores críticos: ${report.errors}`);
-        console.log(`⚠️ Advertencias: ${report.warnings}`);
-        console.log('📋 Para ver detalles: window.a11yAnalyzer.getDetailedReport()');
+        // Mostrar resumen en consola solo en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('♿ REPORTE DE ACCESIBILIDAD:');
+            console.log(`📊 Puntuación: ${report.score}/100`);
+            console.log(`❌ Errores críticos: ${report.errors}`);
+            console.log(`⚠️ Advertencias: ${report.warnings}`);
+            console.log('📋 Para ver detalles: window.a11yAnalyzer.getDetailedReport()');
+        }
         
         return report;
     }

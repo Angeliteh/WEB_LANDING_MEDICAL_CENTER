@@ -21,8 +21,11 @@ class ImageOptimizer {
         // Optimizar imágenes existentes
         this.optimizeExistingImages();
         
-        console.log('🖼️ Image Optimizer initialized');
-        console.log(`📊 WebP Support: ${this.supportsWebP ? 'YES' : 'NO'}`);
+        // Solo logs en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🖼️ Image Optimizer initialized');
+            console.log(`📊 WebP Support: ${this.supportsWebP ? 'YES' : 'NO'}`);
+        }
     }
 
     // Detectar si el navegador soporta WebP
@@ -41,7 +44,10 @@ class ImageOptimizer {
     setupLazyLoading() {
         // Verificar soporte del navegador
         if (!('IntersectionObserver' in window)) {
-            console.log('⚠️ IntersectionObserver no soportado, cargando todas las imágenes');
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('⚠️ IntersectionObserver no soportado, cargando todas las imágenes');
+            }
             this.loadAllImages();
             return;
         }
@@ -130,7 +136,10 @@ class ImageOptimizer {
             img.src = optimizedSrc;
             img.classList.add('loaded');
             
-            console.log(`✅ Loaded WebP: ${optimizedSrc.split('/').pop()}`);
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log(`✅ Loaded WebP: ${optimizedSrc.split('/').pop()}`);
+            }
             
         } catch (error) {
             // Fallback a imagen original
@@ -139,7 +148,10 @@ class ImageOptimizer {
                 img.src = fallbackSrc;
                 img.classList.add('loaded');
                 
-                console.log(`⚠️ Fallback to original: ${fallbackSrc.split('/').pop()}`);
+                // Solo log en desarrollo
+                if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                    console.log(`⚠️ Fallback to original: ${fallbackSrc.split('/').pop()}`);
+                }
                 
             } catch (fallbackError) {
                 console.error('❌ Error loading image:', fallbackError);

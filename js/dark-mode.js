@@ -1,11 +1,11 @@
 /**
- * Dark Mode Manager for Medic Care Template
+ * Dark Mode Manager for Centro Médico San Rafael
  * Handles theme switching, persistence, and system preference detection
  */
 
 class DarkModeManager {
     constructor() {
-        this.storageKey = 'medicCareTheme';
+        this.storageKey = 'centroMedicoTheme';
         this.themes = {
             LIGHT: 'light',
             DARK: 'dark'

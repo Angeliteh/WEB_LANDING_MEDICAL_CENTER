@@ -1,4 +1,4 @@
-// Sistema de traducciones para Medic Care Template
+// Sistema de traducciones para Centro Médico San Rafael
 // Soporte para Español (ES) e Inglés (EN)
 
 const translations = {

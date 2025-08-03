@@ -33,36 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const elementsToAnimate = document.querySelectorAll('.timeline-nodes, .reviews-thumb, .featured-circle, .booking-form');
     elementsToAnimate.forEach(el => observer.observe(el));
     
-    // === IMMEDIATE VISUAL FEEDBACK ===
-    console.log('🎨 Visual improvements loaded!');
-    console.log('✅ Navbar solid background active (scroll animation disabled)');
-    console.log('✅ Scroll animations active');
-    console.log('✅ Hover effects active');
-    
-    // Add a temporary visual indicator
-    const indicator = document.createElement('div');
-    indicator.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #247cff;
-        color: white;
-        padding: 10px 15px;
-        border-radius: 8px;
-        font-size: 14px;
-        z-index: 10000;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        font-family: Arial, sans-serif;
-    `;
-    indicator.textContent = '🎨 Mejoras Visuales Activas';
-    document.body.appendChild(indicator);
-    
-    // Remove indicator after 3 seconds
-    setTimeout(() => {
-        indicator.style.opacity = '0';
-        indicator.style.transform = 'translateY(-20px)';
-        setTimeout(() => indicator.remove(), 300);
-    }, 3000);
+    // === VISUAL IMPROVEMENTS LOADED ===
+    // Solo logs en desarrollo
+    if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+        console.log('🎨 Visual improvements loaded!');
+        console.log('✅ Navbar solid background active (scroll animation disabled)');
+        console.log('✅ Scroll animations active');
+        console.log('✅ Hover effects active');
+    }
     
 });
 

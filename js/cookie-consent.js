@@ -35,7 +35,10 @@ class CookieConsent {
             this.applyConsent(consent);
         }
 
-        console.log('🍪 Cookie Consent System initialized');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🍪 Cookie Consent System initialized');
+        }
     }
 
     showBanner() {
@@ -99,21 +102,33 @@ class CookieConsent {
             gtag('consent', 'update', {
                 'analytics_storage': 'granted'
             });
-            console.log('📊 Google Analytics enabled by user consent');
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('📊 Google Analytics enabled by user consent');
+            }
         } else if (typeof gtag !== 'undefined') {
             // Deshabilitar Google Analytics
             gtag('consent', 'update', {
                 'analytics_storage': 'denied'
             });
-            console.log('📊 Google Analytics disabled by user choice');
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('📊 Google Analytics disabled by user choice');
+            }
         }
 
         // Aquí se pueden agregar más controles para otras cookies/servicios
         if (consent.marketing) {
-            console.log('🎯 Marketing cookies enabled');
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('🎯 Marketing cookies enabled');
+            }
             // Habilitar cookies de marketing
         } else {
-            console.log('🎯 Marketing cookies disabled');
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('🎯 Marketing cookies disabled');
+            }
             // Deshabilitar cookies de marketing
         }
     }

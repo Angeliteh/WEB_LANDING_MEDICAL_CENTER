@@ -11,7 +11,19 @@ class AccessibilityFixer {
     }
 
     init() {
-        console.log('🔧 Accessibility Fixer iniciado - Reparando problemas...');
+        // Verificar si necesita ejecutarse
+        if (window.OPTIMIZATION_CACHE && !window.OPTIMIZATION_CACHE.needsRerun()) {
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('🔧 Accessibility Fixer: Usando cache (ya optimizado)');
+            }
+            return;
+        }
+
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔧 Accessibility Fixer iniciado - Reparando problemas...');
+        }
         this.fixAll();
         this.generateFixReport();
     }
@@ -35,12 +47,18 @@ class AccessibilityFixer {
         // 5. Agregar skip links
         this.addSkipLinks();
         
-        console.log(`✅ Reparaciones completadas: ${this.fixedCount} problemas arreglados`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`✅ Reparaciones completadas: ${this.fixedCount} problemas arreglados`);
+        }
     }
 
     // 1. ARREGLAR FORMULARIOS
     fixForms() {
-        console.log('📝 Reparando formularios...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('📝 Reparando formularios...');
+        }
         
         // Encontrar todos los campos de formulario
         const inputs = document.querySelectorAll('input, textarea, select');
@@ -156,7 +174,10 @@ class AccessibilityFixer {
 
     // 2. MEJORAR NAVEGACIÓN
     fixNavigation() {
-        console.log('🧭 Mejorando navegación...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🧭 Mejorando navegación...');
+        }
         
         // Arreglar enlaces con texto no descriptivo
         const links = document.querySelectorAll('a');
@@ -235,7 +256,10 @@ class AccessibilityFixer {
 
     // 3. AGREGAR ARIA LABELS AVANZADOS
     addAriaLabels() {
-        console.log('🏷️ Agregando ARIA labels...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🏷️ Agregando ARIA labels...');
+        }
         
         // Mejorar secciones principales
         const sections = document.querySelectorAll('section');
@@ -274,7 +298,10 @@ class AccessibilityFixer {
 
     // 4. MEJORAR INTERACTIVIDAD
     fixInteractivity() {
-        console.log('⚡ Mejorando interactividad...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('⚡ Mejorando interactividad...');
+        }
         
         // Agregar role="button" a elementos clickeables que no son botones
         const clickableElements = document.querySelectorAll('[onclick]:not(button):not(a)');
@@ -299,7 +326,10 @@ class AccessibilityFixer {
 
     // 5. AGREGAR SKIP LINKS
     addSkipLinks() {
-        console.log('⏭️ Agregando skip links...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('⏭️ Agregando skip links...');
+        }
         
         // Verificar si ya existe skip link
         if (!document.querySelector('.skip-link')) {
@@ -383,17 +413,24 @@ class AccessibilityFixer {
 
     // Generar reporte de reparaciones
     generateFixReport() {
-        console.log('🔧 REPORTE DE REPARACIONES:');
-        console.log(`✅ Total de problemas arreglados: ${this.fixedCount}`);
-        console.log('📋 Para ver detalles: window.a11yFixer.getFixDetails()');
-        
+        // Solo logs en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔧 REPORTE DE REPARACIONES:');
+            console.log(`✅ Total de problemas arreglados: ${this.fixedCount}`);
+            console.log('📋 Para ver detalles: window.a11yFixer.getFixDetails()');
+        }
+
         // Re-analizar para ver mejora
         if (window.a11yAnalyzer) {
             setTimeout(() => {
-                console.log('🔄 Re-analizando accesibilidad después de reparaciones...');
+                if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                    console.log('🔄 Re-analizando accesibilidad después de reparaciones...');
+                }
                 window.a11yAnalyzer.analyzeAll();
                 const newScore = window.a11yAnalyzer.getScore();
-                console.log(`📈 Nueva puntuación: ${newScore.score}/100 (mejora aplicada)`);
+                if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                    console.log(`📈 Nueva puntuación: ${newScore.score}/100 (mejora aplicada)`);
+                }
             }, 1000);
         }
     }

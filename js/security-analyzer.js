@@ -13,7 +13,19 @@ class SecurityAnalyzer {
     }
 
     init() {
-        console.log('🔒 Security Analyzer iniciado - Examinando vulnerabilidades...');
+        // Verificar si necesita ejecutarse
+        if (window.OPTIMIZATION_CACHE && !window.OPTIMIZATION_CACHE.needsRerun()) {
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('🔒 Security: Usando cache (ya optimizado)');
+            }
+            return;
+        }
+
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔒 Security Analyzer iniciado - Examinando vulnerabilidades...');
+        }
         this.analyzeAll();
         this.generateSecurityReport();
     }
@@ -46,7 +58,10 @@ class SecurityAnalyzer {
 
     // 1. EXAMINAR HEADERS DE SEGURIDAD
     async analyzeSecurityHeaders() {
-        console.log('🛡️ Analizando headers de seguridad...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🛡️ Analizando headers de seguridad...');
+        }
         
         try {
             // Simular verificación de headers (en producción se haría con fetch)
@@ -83,7 +98,10 @@ class SecurityAnalyzer {
 
     // 2. EXAMINAR SEGURIDAD DE FORMULARIOS
     analyzeFormSecurity() {
-        console.log('📝 Analizando seguridad de formularios...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('📝 Analizando seguridad de formularios...');
+        }
         
         const forms = document.querySelectorAll('form');
         let formVulnerabilities = 0;
@@ -119,12 +137,18 @@ class SecurityAnalyzer {
             });
         });
         
-        console.log(`📝 Formularios analizados: ${forms.length}, Vulnerabilidades: ${formVulnerabilities}`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`📝 Formularios analizados: ${forms.length}, Vulnerabilidades: ${formVulnerabilities}`);
+        }
     }
 
     // 3. EXAMINAR ENLACES EXTERNOS
     analyzeExternalLinks() {
-        console.log('🔗 Analizando enlaces externos...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔗 Analizando enlaces externos...');
+        }
         
         const externalLinks = document.querySelectorAll('a[href^="http"]:not([href*="' + window.location.hostname + '"])');
         let linkVulnerabilities = 0;
@@ -157,12 +181,18 @@ class SecurityAnalyzer {
             }
         });
         
-        console.log(`🔗 Enlaces externos analizados: ${externalLinks.length}, Vulnerabilidades: ${linkVulnerabilities}`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`🔗 Enlaces externos analizados: ${externalLinks.length}, Vulnerabilidades: ${linkVulnerabilities}`);
+        }
     }
 
     // 4. EXAMINAR CONTENIDO MIXTO
     analyzeMixedContent() {
-        console.log('🔀 Analizando contenido mixto...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔀 Analizando contenido mixto...');
+        }
         
         if (window.location.protocol === 'https:') {
             // Verificar imágenes HTTP
@@ -195,7 +225,10 @@ class SecurityAnalyzer {
 
     // 5. EXAMINAR COOKIES DE SEGURIDAD
     analyzeCookieSecurity() {
-        console.log('🍪 Analizando seguridad de cookies...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🍪 Analizando seguridad de cookies...');
+        }
         
         const cookies = document.cookie.split(';');
         
@@ -216,7 +249,10 @@ class SecurityAnalyzer {
 
     // 6. EXAMINAR JAVASCRIPT INLINE
     analyzeInlineScripts() {
-        console.log('📜 Analizando JavaScript inline...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('📜 Analizando JavaScript inline...');
+        }
         
         // Verificar scripts inline
         const inlineScripts = document.querySelectorAll('script:not([src])');
@@ -295,8 +331,11 @@ class SecurityAnalyzer {
         const penalty = (criticalVulnerabilities * 20) + (warningVulnerabilities * 10) + (infoVulnerabilities * 5);
         this.securityScore = Math.max(0, this.maxScore - penalty);
         
-        console.log(`🔒 Puntuación de Seguridad: ${this.securityScore}/100`);
-        console.log(`🚨 Críticas: ${criticalVulnerabilities}, ⚠️ Advertencias: ${warningVulnerabilities}, ℹ️ Info: ${infoVulnerabilities}`);
+        // Solo logs en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`🔒 Puntuación de Seguridad: ${this.securityScore}/100`);
+            console.log(`🚨 Críticas: ${criticalVulnerabilities}, ⚠️ Advertencias: ${warningVulnerabilities}, ℹ️ Info: ${infoVulnerabilities}`);
+        }
     }
 
     // Generar reporte de seguridad
@@ -312,13 +351,15 @@ class SecurityAnalyzer {
             recommendations: this.getSecurityRecommendations()
         };
         
-        // Mostrar resumen en consola
-        console.log('🔒 REPORTE DE SEGURIDAD:');
-        console.log(`📊 Puntuación: ${report.securityScore}/100`);
-        console.log(`🚨 Vulnerabilidades críticas: ${report.critical}`);
-        console.log(`⚠️ Advertencias: ${report.warnings}`);
-        console.log(`ℹ️ Información: ${report.info}`);
-        console.log('📋 Para ver detalles: window.securityAnalyzer.getDetailedReport()');
+        // Mostrar resumen en consola solo en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔒 REPORTE DE SEGURIDAD:');
+            console.log(`📊 Puntuación: ${report.securityScore}/100`);
+            console.log(`🚨 Vulnerabilidades críticas: ${report.critical}`);
+            console.log(`⚠️ Advertencias: ${report.warnings}`);
+            console.log(`ℹ️ Información: ${report.info}`);
+            console.log('📋 Para ver detalles: window.securityAnalyzer.getDetailedReport()');
+        }
         
         return report;
     }

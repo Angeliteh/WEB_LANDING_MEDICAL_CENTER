@@ -346,7 +346,7 @@ class LanguageManager {
         if (footerTranslations.copyright) {
             const copyrightElement = document.querySelector('[data-translate="footer.copyright"]');
             if (copyrightElement) {
-                copyrightElement.innerHTML = `${footerTranslations.copyright}<br><br>Design: <a href="https://templatemo.com" target="_parent">TemplateMo</a>`;
+                copyrightElement.innerHTML = `${footerTranslations.copyright}<br><br>Todos los derechos reservados.`;
             }
         }
     }

@@ -27,9 +27,12 @@ class SEOOptimizer {
         this.setupHreflang();
         this.trackSEOEvents();
         
-        console.log('🔍 SEO Optimizer initialized for:', this.config.siteName);
-        console.log('🌐 Business Type:', this.config.businessType);
-        console.log('🗣️ Language:', this.currentLanguage);
+        // Solo logs en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔍 SEO Optimizer initialized for:', this.config.siteName);
+            console.log('🌐 Business Type:', this.config.businessType);
+            console.log('🗣️ Language:', this.currentLanguage);
+        }
     }
 
     // Meta tags dinámicos por idioma
@@ -79,7 +82,10 @@ class SEOOptimizer {
         schemaScript.textContent = JSON.stringify(schema, null, 2);
         document.head.appendChild(schemaScript);
 
-        console.log('📊 Schema Markup updated:', this.config.businessType);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('📊 Schema Markup updated:', this.config.businessType);
+        }
     }
 
     // Generar Schema Markup según el tipo de negocio
@@ -210,7 +216,10 @@ class SEOOptimizer {
         const langPath = this.currentLanguage === 'en' ? '/en' : '';
         canonical.href = `${this.config.siteUrl}${langPath}${currentPath}`;
 
-        console.log('🔗 Canonical URL set:', canonical.href);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔗 Canonical URL set:', canonical.href);
+        }
     }
 
     // Hreflang para multiidioma
@@ -243,7 +252,10 @@ class SEOOptimizer {
         hreflangDefault.href = `${this.config.siteUrl}/`;
         document.head.appendChild(hreflangDefault);
 
-        console.log('🌐 Hreflang tags configured');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🌐 Hreflang tags configured');
+        }
     }
 
     // Breadcrumbs automáticos

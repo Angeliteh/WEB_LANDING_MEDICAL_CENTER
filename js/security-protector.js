@@ -12,7 +12,19 @@ class SecurityProtector {
     }
 
     init() {
-        console.log('🛡️ Security Protector iniciado - Implementando protecciones...');
+        // Verificar si necesita ejecutarse
+        if (window.OPTIMIZATION_CACHE && !window.OPTIMIZATION_CACHE.needsRerun()) {
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('🛡️ Security Protector: Usando cache (ya optimizado)');
+            }
+            return;
+        }
+
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🛡️ Security Protector iniciado - Implementando protecciones...');
+        }
         this.protectAll();
         this.generateProtectionReport();
     }
@@ -42,12 +54,18 @@ class SecurityProtector {
         // 7. Implementar rate limiting básico
         this.implementRateLimiting();
         
-        console.log(`🛡️ Protecciones implementadas: ${this.protectionsApplied} medidas de seguridad`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`🛡️ Protecciones implementadas: ${this.protectionsApplied} medidas de seguridad`);
+        }
     }
 
     // 1. SIMULAR SECURITY HEADERS (para desarrollo)
     simulateSecurityHeaders() {
-        console.log('🔒 Simulando Security Headers...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔒 Simulando Security Headers...');
+        }
         
         // En desarrollo, agregamos meta tags que simulan headers
         const securityHeaders = {
@@ -72,12 +90,18 @@ class SecurityProtector {
         });
 
         // Nota: En producción, estos headers se configuran en el servidor
-        console.log('📝 NOTA: En producción, configurar estos headers en el servidor web');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('📝 NOTA: En producción, configurar estos headers en el servidor web');
+        }
     }
 
     // 2. PROTEGER FORMULARIOS
     protectForms() {
-        console.log('📝 Protegiendo formularios...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('📝 Protegiendo formularios...');
+        }
         
         const forms = document.querySelectorAll('form');
         
@@ -122,7 +146,10 @@ class SecurityProtector {
 
     // 3. ASEGURAR ENLACES EXTERNOS
     secureExternalLinks() {
-        console.log('🔗 Asegurando enlaces externos...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔗 Asegurando enlaces externos...');
+        }
         
         const externalLinks = document.querySelectorAll('a[href^="http"]:not([href*="' + window.location.hostname + '"])');
         
@@ -162,7 +189,10 @@ class SecurityProtector {
 
     // 4. IMPLEMENTAR CSP BÁSICO
     implementBasicCSP() {
-        console.log('🔐 Implementando Content Security Policy...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🔐 Implementando Content Security Policy...');
+        }
         
         // Mover scripts inline a funciones
         this.moveInlineScripts();
@@ -176,7 +206,10 @@ class SecurityProtector {
 
     // 5. SANITIZAR INPUTS
     sanitizeInputs() {
-        console.log('🧹 Implementando sanitización de inputs...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🧹 Implementando sanitización de inputs...');
+        }
         
         const inputs = document.querySelectorAll('input, textarea');
         
@@ -186,7 +219,10 @@ class SecurityProtector {
                 const sanitized = this.sanitizeString(e.target.value);
                 if (sanitized !== e.target.value) {
                     e.target.value = sanitized;
-                    console.log('🧹 Input sanitizado automáticamente');
+                    // Solo log en desarrollo
+                    if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                        console.log('🧹 Input sanitizado automáticamente');
+                    }
                 }
             });
             
@@ -198,7 +234,10 @@ class SecurityProtector {
 
     // 6. PREVENIR CLICKJACKING
     preventClickjacking() {
-        console.log('🚫 Implementando protección contra clickjacking...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🚫 Implementando protección contra clickjacking...');
+        }
         
         // Verificar si la página está en un iframe
         if (window.self !== window.top) {
@@ -235,7 +274,10 @@ class SecurityProtector {
 
     // 7. IMPLEMENTAR RATE LIMITING BÁSICO
     implementRateLimiting() {
-        console.log('⏱️ Implementando rate limiting...');
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('⏱️ Implementando rate limiting...');
+        }
         
         // Rate limiting para formularios
         this.formSubmissions = new Map();
@@ -329,7 +371,10 @@ class SecurityProtector {
         // En una implementación real, moveríamos scripts inline a archivos externos
         // Por ahora, solo los documentamos
         const inlineScripts = document.querySelectorAll('script:not([src])');
-        console.log(`📜 Detectados ${inlineScripts.length} scripts inline - Recomendación: mover a archivos externos`);
+        // Solo log en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log(`📜 Detectados ${inlineScripts.length} scripts inline - Recomendación: mover a archivos externos`);
+        }
     }
 
     moveInlineEventHandlers() {
@@ -337,7 +382,10 @@ class SecurityProtector {
         const elementsWithHandlers = document.querySelectorAll('[onclick], [onload], [onerror]');
         elementsWithHandlers.forEach(element => {
             // Por ahora solo documentamos - en producción se moverían
-            console.log('📜 Event handler inline detectado - Recomendación: usar addEventListener');
+            // Solo log en desarrollo
+            if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                console.log('📜 Event handler inline detectado - Recomendación: usar addEventListener');
+            }
         });
     }
 
@@ -351,17 +399,24 @@ class SecurityProtector {
 
     // Generar reporte de protecciones
     generateProtectionReport() {
-        console.log('🛡️ REPORTE DE PROTECCIONES:');
-        console.log(`✅ Total de protecciones implementadas: ${this.protectionsApplied}`);
-        console.log('📋 Para ver detalles: window.securityProtector.getProtectionDetails()');
-        
+        // Solo logs en desarrollo
+        if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+            console.log('🛡️ REPORTE DE PROTECCIONES:');
+            console.log(`✅ Total de protecciones implementadas: ${this.protectionsApplied}`);
+            console.log('📋 Para ver detalles: window.securityProtector.getProtectionDetails()');
+        }
+
         // Re-analizar seguridad para ver mejora
         if (window.securityAnalyzer) {
             setTimeout(() => {
-                console.log('🔄 Re-analizando seguridad después de protecciones...');
+                if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                    console.log('🔄 Re-analizando seguridad después de protecciones...');
+                }
                 window.securityAnalyzer.analyzeAll();
                 const newScore = window.securityAnalyzer.getSecurityScore();
-                console.log(`📈 Nueva puntuación de seguridad: ${newScore.score}/100 (${newScore.level})`);
+                if (window.ENVIRONMENT && !window.ENVIRONMENT.isProduction) {
+                    console.log(`📈 Nueva puntuación de seguridad: ${newScore.score}/100 (${newScore.level})`);
+                }
             }, 1000);
         }
     }
